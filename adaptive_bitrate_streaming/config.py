@@ -27,11 +27,12 @@ class Config:
     exp_pools_dir = artifacts_dir + 'exp_pools/'
 
     # plm special
-    plm_types = ['gpt2', 'llama', 'llava', 't5-lm', 'opt', 'mistral']
-    plm_sizes = ['xxs', 'xs', 'small', 'base', 'large', 'xl', 'xxl']  # note that the actual size of plm is dependent on the type of plm. 
-                                                         # for example, for llama, 'base' is 7b, while for gpt2, 'base' is 340M. you can specify it yourself.
+    plm_types = ['gpt2', 'llama', 'llava', 't5-lm', 'opt', 'mistral', 'phi3']  # Added 'phi3'
+    plm_sizes = ['xxs', 'xs', 'small', 'base', 'large', 'xl', 'xxl']  # No changes here; use 'base' for Phi-3
+    
     plm_dir = _base_dir + ('../../downloaded_plms' if 'adaptive_bitrate_streaming' in _base_dir else '../downloaded_plms')
     plm_ft_dir = _base_dir + 'data/ft_plms'
+
     plm_embed_sizes = {
         'gpt2': {
             'base': 1024,
@@ -61,7 +62,11 @@ class Config:
             'xs': 2048,
             'xxs': 512,
         },
+        'phi3': {  # Added Phi-3 embed sizes
+            'base': 4096,
+        },
     }
+
     plm_layer_sizes = {
         'gpt2': {
             'base': 24,
@@ -90,6 +95,9 @@ class Config:
             'small': 32,
             'xs': 32,
             'xxs': 16,
+        },
+        'phi3': {  # Added Phi-3 layer sizes
+            'base': 32,
         },
     }
 
